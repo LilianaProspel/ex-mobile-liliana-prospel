@@ -14,11 +14,13 @@ public class AppiumAndroidDriver {
     public static AppiumAndroidDriver suNavegador() {
         try {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("deviceName","Automation Testing");
+            capabilities.setCapability("appium:deviceName","Pixel 8 API 28");
             capabilities.setCapability("platformName","Android");
-            capabilities.setCapability("platformVersion","11");
-            capabilities.setCapability("automationName","UiAutomator2");
-            capabilities.setCapability("app","C:\\Users\\andre\\IdeaProjects\\ex-mobile-liliana-prospel\\SwagLabs\\src\\main\\java\\com\\example\\app\\Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
+            capabilities.setCapability("appium:platformVersion","9");
+            capabilities.setCapability("appium:automationName","UiAutomator2");
+            capabilities.setCapability("appium:appActivity", "com.swaglabsmobileapp.MainActivity");
+            capabilities.setCapability("appium:appWaitDuration", 30000);
+            capabilities.setCapability("appium:app","C:\\Users\\andre\\IdeaProjects\\ex-mobile-liliana-prospel\\ex-mobile-liliana-prospel\\SwagLabs\\src\\main\\java\\driver\\Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
             driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         } catch (MalformedURLException e) {
             LOGGER.log(Level.SEVERE, "URL mal formada", e);
@@ -26,7 +28,7 @@ public class AppiumAndroidDriver {
         return new AppiumAndroidDriver();
     }
 
-    public io.appium.java_client.AppiumDriver onDriver() {
+    public AppiumDriver onDriver() {
         return driver;
     }
 }

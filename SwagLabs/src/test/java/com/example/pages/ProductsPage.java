@@ -10,10 +10,10 @@ import java.util.List;
 
 public class ProductsPage extends PageObject {
 
-    @FindBy(xpath = "//*[@text='PRODUCTS']")
-    private WebElement productsTitle;
-
     @FindBy(className = "android.widget.TextView")
+    private List<WebElement> textViews;
+
+    @FindBy(xpath = "(//android.widget.TextView[@text=\"ADD TO CART\"])")
     private List<WebElement> productsList;
 
     public ProductsPage(AppiumDriver driver) {
@@ -21,11 +21,16 @@ public class ProductsPage extends PageObject {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean isProductsTitleDisplayed() {
-        return productsTitle.isDisplayed();
+    public boolean isAtLeastOneProductDisplayed() {
+        return !productsList.isEmpty();
     }
 
-    public boolean isAtLeastOneProductDisplayed() {
-        return productsList.size() > 0;
+    public WebElement getPageTitle() {
+        for (WebElement textView : textViews) {
+            if (textView.getText().equals("PRODUCTS")) {
+                return textView;
+            }
+        }
+        return null;
     }
 }

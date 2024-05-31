@@ -8,13 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends PageObject {
 
-    @FindBy(id = "test-Username")
+    @FindBy(xpath = "//*[@content-desc='test-Username']")
     private WebElement usernameField;
 
-    @FindBy(id = "test-Password")
+    @FindBy(xpath = "//*[@content-desc='test-Password']")
     private WebElement passwordField;
 
-    @FindBy(id = "test-LOGIN")
+    @FindBy(xpath = "//*[@content-desc='test-LOGIN']")
     private WebElement loginButton;
 
     public LoginPage(AppiumDriver driver) {
